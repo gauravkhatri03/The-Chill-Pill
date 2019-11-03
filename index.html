@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="token_div" style="display: none;">
+      <h4>Instance ID Token</h4>
+      <p id="token" style="word-break: break-all;"></p>
+    </div>
+    <div id="permission_div" style="display: none;">
+      <h4>Needs Permission</h4>
+      <p id="token"></p>
+      <button
+        class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+        onclick="requestPermission()"
+      >
+        Request Permission
+      </button>
+    </div>
+    <!-- div to display messages received by this app. -->
+    <div id="messages"></div>
+    <!-- </div> -->
+    
+    <div class="patient-form">
+      <form>
+        <div class="form-group">
+          <label for="textareaTest">Enter info</label>
+          <textarea
+            class="form-control"
+            id="textareaTest"
+            rows="3"
+            placeholder="enter the info here"
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
+    <script src="app.js"></script>
+    <!-- <script src="textarea.mjs"></script> -->
+  </body>
+</html>
+
+<!-- function showHideDiv(divId, show) {
+    const div = document.querySelector('#' + divId);
+    if (show) {
+      div.style = 'display: visible';
+    } else {
+      div.style = 'display: none';
+    }
+  }
+  function requestPermission() {
+    console.log('Requesting permission...');
+    // [START request_permission]
+    Notification.requestPermission().then((permission) => {
+      if (permission === 'granted') {
+        console.log('Notification permission granted.');
+        // TODO(developer): Retrieve an Instance ID token for use with FCM.
+        // [START_EXCLUDE]
+        // In many cases once an app has been granted notification permission,
+        // it should update its UI reflecting this.
+        resetUI();
+        // [END_EXCLUDE]
+      } else {
+        console.log('Unable to get permission to notify.');
+      }
+    });
+    // [END request_permission]
+  }
+  // Add a message to the messages element.
+  function appendMessage(payload) {
+    const messagesElement = document.querySelector('#messages');
+    const dataHeaderELement = document.createElement('h5');
+    const dataElement = document.createElement('pre');
+    dataElement.style = 'overflow-x:hidden;';
+    dataHeaderELement.textContent = 'Received message:';
+    dataElement.textContent = JSON.stringify(payload, null, 2);
+    messagesElement.appendChild(dataHeaderELement);
+    messagesElement.appendChild(dataElement);
+  }
+  // Clear the messages element of all children.
+  // function clearMessages() {
+  //   const messagesElement = document.querySelector('#messages');
+  //   while (messagesElement.hasChildNodes()) {
+  //     messagesElement.removeChild(messagesElement.lastChild);
+  //   }
+  // } -->
